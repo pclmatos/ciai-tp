@@ -7,4 +7,8 @@ class App {
 
     fun hello() = "Hello World"
 
+    fun print(word:String): String{
+        return word
+    }
+
 }
