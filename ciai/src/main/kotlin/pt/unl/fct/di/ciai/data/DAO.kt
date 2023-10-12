@@ -12,8 +12,7 @@ data class UserDAO(
     val password: String,
     val name: String,
     val phoneNumber: String,
-    @OneToOne(cascade = [CascadeType.ALL]) val picture: Picture,
-    @OneToMany val ownedApartments: List<ApartmentDAO>
+    @OneToOne(cascade = [CascadeType.ALL]) val picture: Picture
 )
 
 @Entity
@@ -29,6 +28,13 @@ data class ClientDAO(
 )
 
 @Entity
+data class OwnerDAO(
+        @Id @GeneratedValue val id: Long,
+        @OneToOne @Column(unique = true) val user: UserDAO,
+        @OneToMany val ownedApartments: List<ApartmentDAO>
+)
+
+@Entity
 data class ApartmentDAO(
     @Id @GeneratedValue val id:Long,
     val name: String,
@@ -37,7 +43,7 @@ data class ApartmentDAO(
     val location: String,
     val pricePerNight: Int,
     @OneToMany(cascade = [CascadeType.ALL]) val pictures: List<Picture>,
-    @ManyToOne val owner: UserDAO,
+    @ManyToOne val owner: OwnerDAO,
     @OneToMany(cascade = [CascadeType.ALL]) val periods: List<PeriodDAO>,
     @OneToMany(cascade = [CascadeType.ALL]) val reviews: List<ReviewDAO>,
     @OneToMany val reservation: List<ReservationDAO>
