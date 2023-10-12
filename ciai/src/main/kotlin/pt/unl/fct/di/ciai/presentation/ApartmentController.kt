@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController
 import pt.unl.fct.di.ciai.application.App
 
 @RestController
-@RequestMapping("/api")
-class AppController (val app:App) {
+@RequestMapping("/apartment")
+class ApartmentController (val app:App) {
 
-    @GetMapping("hello")
+    @GetMapping("all")
     fun hello() = app.hello()
 
     @PostMapping("test")
