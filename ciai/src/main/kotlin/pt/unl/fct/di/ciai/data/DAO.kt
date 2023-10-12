@@ -1,15 +1,18 @@
 package pt.unl.fct.di.ciai.data
 
-
 import jakarta.persistence.*
-import org.apache.catalina.User
+import jakarta.persistence.CascadeType
 import java.util.Date
 
 @Entity
 data class UserDAO(
     @Id @GeneratedValue val id:Long,
     @Column(unique = true) val email:String,
+    @Column(unique = true) val username: String,
+    val password: String,
     val name: String,
+    val phoneNumber: String,
+    @OneToOne(cascade = [CascadeType.ALL]) val picture: Picture,
     @OneToMany val ownedApartments: List<ApartmentDAO>
 )
 
@@ -28,18 +31,46 @@ data class ClientDAO(
 @Entity
 data class ApartmentDAO(
     @Id @GeneratedValue val id:Long,
+    val name: String,
+    val description: String,
+    val amenities: String,
     val location: String,
+    val pricePerNight: Int,
+    @OneToMany(cascade = [CascadeType.ALL]) val pictures: List<Picture>,
     @ManyToOne val owner: UserDAO,
-    @OneToMany val periods: List<PeriodDAO>
+    @OneToMany(cascade = [CascadeType.ALL]) val periods: List<PeriodDAO>,
+    @OneToMany(cascade = [CascadeType.ALL]) val reviews: List<ReviewDAO>,
+    @OneToMany val reservation: List<ReservationDAO>
 )
 
 @Entity
 data class PeriodDAO(
     @Id val from: Date,
     val to: Date,
-    val state: ApartmentState,
+    val state: ApartmentState
 )
 
+@Entity
+data class ReservationDAO(
+    @Id @GeneratedValue val id: Long,
+    val from: Date,
+    val to: Date,
+    @ManyToOne val apartment: ApartmentDAO
+)
+
+@Entity
+data class ReviewDAO(
+    @Id @GeneratedValue val id: Long,
+    val description: String,
+    val rating: Double,
+    @ManyToOne val apartmentDAO: ApartmentDAO
+)
+
+@Entity
+data class Picture(
+    @Id @GeneratedValue val id: Long,
+    val byte: ByteArray
+)
 enum class ApartmentState{
     UNDER_CONSIDERATION,
     BOOKED,
