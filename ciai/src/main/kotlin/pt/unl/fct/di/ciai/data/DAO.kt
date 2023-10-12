@@ -13,10 +13,13 @@ data class UserDAO(
     @OneToMany val ownedApartments: List<ApartmentDAO>
 )
 
+@Entity
 data class ManagerDAO(
     @Id @GeneratedValue val id: Long,
     @OneToOne @Column(unique = true) val user: UserDAO
 )
+
+@Entity
 data class ClientDAO(
     @Id @GeneratedValue val id: Long,
     @OneToOne @Column(unique = true) val user: UserDAO
