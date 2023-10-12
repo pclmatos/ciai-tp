@@ -1,18 +1,28 @@
-GET /apartments - Retrieves all apartment
-POST /apartments - Adds a new apartment with the information in the payload
-POST /apartments/{id}/bid - Bid on an apartment with {id} with period information in the payload
+GET /apartments/all - Retrieves all apartment
 GET /apartments/{id} - Retrieves the information of apartment with {id}
-GET /apartments/{id}/bids - List all bids on apartment with {id}
-GET /apartments?location=<location> - Retrieves all apartments located in <location>
+GET /apartments?search=<searchCriteria> - Retrieves all apartments that answer <searchCriteria>
+GET /apartments/{id}/history - Retrieves the history of an apartment with {id}
+GET /apartments/{id}/reservations - Retrieves all upcoming reservations
+GET /apartments/{id}/reviews - Retrieves all reviews from apartment with {id}
+GET /apartments/{id}/calendar - Retrieves a calendar with the available periods for apartment with {id}
+
+PUT /apartments/{id}/update - Update information for the apartment with {id}
+PUT /apartments?apartment=<apartId>&reservation=<reservationId> - Decides the state of reservation with {reservationId} for apartment with {apartId} with the information in the payload
+
+POST /apartments/{id}/reservation - Reservation on an apartment with {id} with period information in the payload
+POST /apartments - Adds a new apartment with the information in the payload
+POST /apartments{id}/addReview - Add a review to apartment with {id}
+
+DELETE /apartments/{apartId}/reservations/{resId}/remove - Remove a reservation with {resId} made on an apartment with {apartId}
 DELETE /apartments/{id} - Removes apartment with {id}
 
+GET /person/{id} - Retrieves person with {id}
+GET /person/reservations - Retrieves the reservations of the logged in person
+
+PUT /person/update - The current person updates its information
+
 POST /person - Adds a new person with information in the payload
-GET /person
-GET /person/{id}
-GET /person/bids - Retrieves the bid of the logged in person
-DELETE /person - Removes person logged in to the session
 POST /person/checkin?apartment=<id> - The current person checks-in to apartment with <id>
 POST /person/checkout?apartment=<id> - The current person checks-out from apartment with <id>
 
-
-PUT /manager?apartment=<id>&bid=<bid> - Decides the state of bid with {bid} for apartment with {id} with the information in the payload
+DELETE /person/{id} - Removes a person with {id}
