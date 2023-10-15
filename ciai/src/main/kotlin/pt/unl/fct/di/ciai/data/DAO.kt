@@ -46,7 +46,7 @@ data class ApartmentDAO(
     @ManyToOne val owner: OwnerDAO,
     @OneToMany(cascade = [CascadeType.ALL]) val periods: List<PeriodDAO>,
     @OneToMany(cascade = [CascadeType.ALL]) val reviews: List<ReviewDAO>,
-    @OneToMany val reservation: List<ReservationDAO>
+    @OneToMany val reservations: List<ReservationDAO>
 )
 
 @Entity
@@ -69,7 +69,7 @@ data class ReviewDAO(
     @Id @GeneratedValue val id: Long,
     val description: String,
     val rating: Double,
-    @ManyToOne val apartmentDAO: ApartmentDAO
+    @ManyToOne val apartment: ApartmentDAO
 )
 
 @Entity
