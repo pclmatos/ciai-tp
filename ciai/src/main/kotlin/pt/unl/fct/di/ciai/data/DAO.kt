@@ -18,19 +18,19 @@ data class UserDAO(
 @Entity
 data class ManagerDAO(
     @Id @GeneratedValue val id: Long,
-    @OneToOne @Column(unique = true) val user: UserDAO
+    @OneToOne val user: UserDAO
 )
 
 @Entity
 data class ClientDAO(
     @Id @GeneratedValue val id: Long,
-    @OneToOne @Column(unique = true) val user: UserDAO
+    @OneToOne val user: UserDAO
 )
 
 @Entity
 data class OwnerDAO(
         @Id @GeneratedValue val id: Long,
-        @OneToOne @Column(unique = true) val user: UserDAO,
+        @OneToOne val user: UserDAO,
         @OneToMany val ownedApartments: List<ApartmentDAO>
 )
 
@@ -44,23 +44,23 @@ data class ApartmentDAO(
     val pricePerNight: Int,
     @OneToMany(cascade = [CascadeType.ALL]) val pictures: List<Picture>,
     @ManyToOne val owner: OwnerDAO,
-    @OneToMany(cascade = [CascadeType.ALL]) val periods: List<PeriodDAO>,
-    @OneToMany(cascade = [CascadeType.ALL]) val reviews: List<ReviewDAO>,
-    @OneToMany val reservations: List<ReservationDAO>
+    @OneToMany(cascade = [CascadeType.ALL]) val reservations: List<ReservationDAO>,
+    @OneToMany(cascade = [CascadeType.ALL]) val reviews: List<ReviewDAO>
 )
 
-@Entity
+/*@Entity
 data class PeriodDAO(
-    @Id val from: Date,
+    val from: Date,
     val to: Date,
     val state: ApartmentState
-)
+)*/
 
 @Entity
 data class ReservationDAO(
     @Id @GeneratedValue val id: Long,
-    val from: Date,
-    val to: Date,
+    val initDate:Date,
+    val endDate: Date,
+    val state: ApartmentState,
     @ManyToOne val apartment: ApartmentDAO
 )
 
