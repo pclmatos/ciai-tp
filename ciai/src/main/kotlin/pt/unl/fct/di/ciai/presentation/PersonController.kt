@@ -13,20 +13,20 @@ import pt.unl.fct.di.ciai.application.PersonApp
 
 @RestController
 @RequestMapping("/people")
-class PersonController(val app:PersonApp) {
-    @GetMapping("{id}")
-    fun getPerson(@PathVariable id:Long) = app.getPerson(id)
+class PersonController(val app:PersonApp):PersonAPI {
+    override fun getPerson(id: Long) {
+    }
 
-    @GetMapping("{id}/reservations")
-    fun getPersonReservations(@PathVariable id:Long) = app.getPersonReservations(id)
+    override fun getPersonReservations(id: Long) {
+    }
 
-    @PutMapping("{id}/update")
-    fun updatePerson(@PathVariable id:Long, updatedInfo:Json) = app.updatePerson(id, updatedInfo)
+    override fun updatePerson(id: Long, email: String, username: String, password: String, name: String, phoneNumber: String) {
+    }
 
-    @PostMapping("add")
-    fun addPerson(@RequestBody personInfo:Json) = app.addPerson(personInfo)
+    override fun addPerson(email: String, username: String, password: String, name: String, phoneNumber: String) {
+    }
 
-    @DeleteMapping("{id}/remove")
-    fun removePerson(@PathVariable id:Long) = app.removePerson(id)
+    override fun removePerson(id: Long) {
+    }
 
 }

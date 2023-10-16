@@ -6,7 +6,7 @@ import pt.unl.fct.di.ciai.data.ApartmentRepository
 
 @Service
 class ApartmentService(val apartments: ApartmentRepository) {
-    fun addApartment(name:String, price:Int) {
+    fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
         //add apartment to DB
     }
 
@@ -30,7 +30,7 @@ class ApartmentService(val apartments: ApartmentRepository) {
         //get apartment calendar by id
     }
 
-    fun updateApartment(id:Long, updatedInfo:Json) {
+    fun updateApartment(id:Long, name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
         //update apartment info by id to updated info
     }
 

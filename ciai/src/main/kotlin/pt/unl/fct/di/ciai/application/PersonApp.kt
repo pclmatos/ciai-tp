@@ -11,9 +11,9 @@ class PersonApp(val people: PersonService) {
 
     fun getPersonReservations(id:Long) = people.getPersonReservations(id)
 
-    fun updatePerson(id:Long, updatedInfo:Json) = people.updatePerson(id, updatedInfo)
+    fun updatePerson(id:Long, email: String, username: String, password: String, name: String, phoneNumber: String) = people.updatePerson(id, email, username, password, name, phoneNumber)
 
-    fun addPerson(personInfo:Json) = people.addPerson(personInfo)
+    fun addPerson(email: String, username: String, password: String, name: String, phoneNumber: String) = people.addPerson(email, username, password, name, phoneNumber)
 
     fun removePerson(id:Long) = people.removePerson(id)
 }

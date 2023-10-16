@@ -13,11 +13,11 @@ class PersonService {
         //get person reservations by id
     }
 
-    fun updatePerson(id:Long, updatedInfo:Json) {
+    fun updatePerson(id:Long, email: String, username: String, password: String, name: String, phoneNumber: String) {
         //update person information by id
     }
 
-    fun addPerson(personInfo:Json) {
+    fun addPerson(email: String, username: String, password: String, name: String, phoneNumber: String) {
         //add person to DB with personInfo
     }
 

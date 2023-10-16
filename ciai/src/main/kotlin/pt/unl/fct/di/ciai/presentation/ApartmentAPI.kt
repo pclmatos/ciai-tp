@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/apartments")
 interface ApartmentAPI {
 
-    @Operation(summary = "Adds a new apartment given the name, price, etc")
+    @Operation(summary = "Adds a new apartment given needed data")
     @PostMapping("add")
     fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) //= apartmentApp.addApartment(name, price)
 
@@ -34,7 +34,7 @@ interface ApartmentAPI {
 
     @Operation(summary = "Updates an apartment")
     @PutMapping("{id}/update")
-    fun updateApartment(@PathVariable id:Long, @RequestBody updatedInfo:Json) //= apartmentApp.updateApartment(id, updatedInfo)
+    fun updateApartment(@PathVariable id:Long, name:String, description: String, amenities: String, location: String, pricePerNight:Int) //= apartmentApp.updateApartment(id, updatedInfo)
 
     @Operation(summary = "Deletes the apartment with the given id")
     @DeleteMapping("{id}")

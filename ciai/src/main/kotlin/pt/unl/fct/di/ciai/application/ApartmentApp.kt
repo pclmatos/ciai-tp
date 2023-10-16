@@ -13,9 +13,7 @@ class ApartmentApp(val apartments:ApartmentService) {
         return word
     }
 
-    //Should we create an apartmentApp?
-
-    fun addApartment(name:String, price:Int) = apartments.addApartment(name, price)
+    fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) = apartments.addApartment(name, description, amenities, location, pricePerNight)
 
     fun getApartment(id:Long) = apartments.getApartment(id)
 
@@ -27,7 +25,7 @@ class ApartmentApp(val apartments:ApartmentService) {
 
     fun getApartmentCalendar(id:Long) = apartments.getApartmentCalendar(id)
 
-    fun updateApartment(id:Long, updatedInfo:Json) = apartments.updateApartment(id, updatedInfo)
+    fun updateApartment(id:Long, name:String, description: String, amenities: String, location: String, pricePerNight:Int) = apartments.updateApartment(id, name, description, amenities, location, pricePerNight)
 
     fun deleteApartment(id:Long) = apartments.deleteApartment(id)
 

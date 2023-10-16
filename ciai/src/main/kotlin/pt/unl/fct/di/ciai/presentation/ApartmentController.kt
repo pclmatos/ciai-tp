@@ -30,7 +30,7 @@ import pt.unl.fct.di.ciai.application.ApartmentApp
     override fun getApartmentCalendar(id: Long) {
     }
 
-    override fun updateApartment(id: Long, updatedInfo: Json) {
+    override fun updateApartment(id: Long, name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
     }
 
     override fun deleteApartment(id: Long) {
