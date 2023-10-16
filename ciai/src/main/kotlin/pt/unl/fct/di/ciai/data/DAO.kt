@@ -24,7 +24,8 @@ data class ManagerDAO(
 @Entity
 data class ClientDAO(
     @Id @GeneratedValue val id: Long,
-    @OneToOne val user: UserDAO
+    @OneToOne val user: UserDAO,
+    @OneToMany val reservations: List<ReservationDAO>
 )
 
 @Entity
@@ -48,12 +49,14 @@ data class ApartmentDAO(
     @OneToMany(cascade = [CascadeType.ALL]) val reviews: List<ReviewDAO>
 )
 
-/*@Entity
+@Entity
 data class PeriodDAO(
-    val from: Date,
-    val to: Date,
-    val state: ApartmentState
-)*/
+    @Id @GeneratedValue val id: Long, //consider changing id to initDate
+    val initDate: Date,
+    val endDate: Date,
+    val state: ApartmentState,
+    @ManyToOne val apartment: ApartmentDAO,
+)
 
 @Entity
 data class ReservationDAO(
@@ -61,7 +64,8 @@ data class ReservationDAO(
     val initDate:Date,
     val endDate: Date,
     val state: ApartmentState,
-    @ManyToOne val apartment: ApartmentDAO
+    @ManyToOne val apartment: ApartmentDAO,
+    @ManyToOne val client: ClientDAO
 )
 
 @Entity

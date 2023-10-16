@@ -2,12 +2,10 @@ package pt.unl.fct.di.ciai.application
 
 import io.swagger.v3.core.util.Json
 import org.springframework.stereotype.Service
-import pt.unl.fct.di.ciai.data.ApartmentDAO
-import pt.unl.fct.di.ciai.data.ApartmentRepository
 import pt.unl.fct.di.ciai.service.ApartmentService
 
 @Service
-class App(val apartments:ApartmentService) {
+class ApartmentApp(val apartments:ApartmentService) {
 
     fun hello() = "Hello World"
 

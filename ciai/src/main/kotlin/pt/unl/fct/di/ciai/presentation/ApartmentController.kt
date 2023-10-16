@@ -8,34 +8,32 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import pt.unl.fct.di.ciai.application.App
+import pt.unl.fct.di.ciai.application.ApartmentApp
 
-@RestController
-@RequestMapping("/apartments")
-class ApartmentController (val app:App) {
-    @PostMapping("add")
-    fun addApartment(name:String, price:Int) = app.addApartment(name, price)
+@RestController class ApartmentController (val apartmentApp:ApartmentApp): ApartmentAPI {
+    override fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
+    }
 
-    @GetMapping("{id}")
-    fun getApartment(@PathVariable id:Long) = app.getApartment(id)
+    override fun getApartment(id: Long) {
+    }
 
-    @GetMapping("{id}/history")
-    fun getApartmentHistory(@PathVariable id:Long) = app.getApartmentHistory(id)
+    override fun getApartmentHistory(id: Long) {
+    }
 
-    @GetMapping("{id}/reservations")
-    fun getApartmentReservations(@PathVariable id:Long) = app.getApartmentReservations(id)
+    override fun getApartmentReservations(id: Long) {
+    }
 
-    @GetMapping("{id}/reviews")
-    fun getApartmentReviews(@PathVariable id:Long) = app.getApartmentReviews(id)
+    override fun getApartmentReviews(id: Long) {
+    }
 
-    @GetMapping("{id}/calendar")
-    fun getApartmentCalendar(@PathVariable id:Long) = app.getApartmentCalendar(id)
+    override fun getApartmentCalendar(id: Long) {
+    }
 
-    @PutMapping("{id}/update")
-    fun updateApartment(@PathVariable id:Long, @RequestBody updatedInfo:Json) = app.updateApartment(id, updatedInfo)
+    override fun updateApartment(id: Long, updatedInfo: Json) {
+    }
 
-    @DeleteMapping("{id}")
-    fun deleteApartment(@PathVariable id:Long) = app.deleteApartment(id)
+    override fun deleteApartment(id: Long) {
+    }
+
 }
