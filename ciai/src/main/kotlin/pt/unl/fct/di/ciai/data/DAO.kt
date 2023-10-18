@@ -63,7 +63,7 @@ data class ReservationDAO(
     @Id @GeneratedValue val id: Long,
     val initDate:Date,
     val endDate: Date,
-    val state: ApartmentState,
+    val state: ReservationState,
     @ManyToOne val apartment: ApartmentDAO,
     @ManyToOne val client: ClientDAO
 )
@@ -82,9 +82,13 @@ data class Picture(
     val url: String
 )
 enum class ApartmentState{
-    UNDER_CONSIDERATION,
     BOOKED,
     OCCUPIED,
     AWAITING_REVIEW,
     CLOSED
+}
+
+enum class ReservationState{
+    UNDER_CONSIDERATION,
+    ACCEPTED
 }
