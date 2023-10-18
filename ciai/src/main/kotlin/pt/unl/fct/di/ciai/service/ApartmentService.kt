@@ -3,6 +3,7 @@ import io.swagger.v3.core.util.Json
 import org.springframework.stereotype.Service
 import pt.unl.fct.di.ciai.data.ApartmentDAO
 import pt.unl.fct.di.ciai.data.ApartmentRepository
+import pt.unl.fct.di.ciai.presentation.ApartmentDTO
 
 @Service
 class ApartmentService(val apartments: ApartmentRepository) {
@@ -30,7 +31,7 @@ class ApartmentService(val apartments: ApartmentRepository) {
         //get apartment calendar by id
     }
 
-    fun updateApartment(id:Long, name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
+    fun updateApartment(data: ApartmentDTO) {
         //update apartment info by id to updated info
     }
 

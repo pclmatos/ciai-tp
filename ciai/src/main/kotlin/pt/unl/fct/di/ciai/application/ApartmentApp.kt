@@ -2,6 +2,7 @@ package pt.unl.fct.di.ciai.application
 
 import io.swagger.v3.core.util.Json
 import org.springframework.stereotype.Service
+import pt.unl.fct.di.ciai.presentation.ApartmentDTO
 import pt.unl.fct.di.ciai.service.ApartmentService
 
 @Service
@@ -27,7 +28,7 @@ class ApartmentApp(val apartments:ApartmentService) {
 
     fun getApartmentCalendar(id:Long) = apartments.getApartmentCalendar(id)
 
-    fun updateApartment(id:Long, name:String, description: String, amenities: String, location: String, pricePerNight:Int) = apartments.updateApartment(id, name, description, amenities, location, pricePerNight)
+    fun updateApartment(data: ApartmentDTO) = apartments.updateApartment(data)
 
     fun deleteApartment(id:Long) = apartments.deleteApartment(id)
 
