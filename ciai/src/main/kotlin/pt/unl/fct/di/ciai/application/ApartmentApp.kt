@@ -15,6 +15,8 @@ class ApartmentApp(val apartments:ApartmentService) {
 
     fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) = apartments.addApartment(name, description, amenities, location, pricePerNight)
 
+    fun getAllApartments() = apartments.apartments.findAll().toList()
+
     fun getApartment(id:Long) = apartments.getApartment(id)
 
     fun getApartmentHistory(id:Long) = apartments.getApartmentHistory(id)

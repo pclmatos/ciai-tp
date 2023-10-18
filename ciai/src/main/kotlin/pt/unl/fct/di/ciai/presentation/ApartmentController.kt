@@ -12,7 +12,13 @@ import org.springframework.web.bind.annotation.RestController
 import pt.unl.fct.di.ciai.application.ApartmentApp
 
 @RestController class ApartmentController (val apartmentApp:ApartmentApp): ApartmentAPI {
-    override fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
+    override fun addApartment(dto: ApartmentDTO) {
+    }
+
+    override fun getAllApartment(): List<ApartmentDTO> {
+        return apartmentApp.getAllApartments().map {
+            ApartmentDTO(it.id,it.name,it.description,it.amenities,it.location,it.pricePerNight)
+        }
     }
 
     override fun getApartment(id: Long) {
@@ -30,7 +36,7 @@ import pt.unl.fct.di.ciai.application.ApartmentApp
     override fun getApartmentCalendar(id: Long) {
     }
 
-    override fun updateApartment(id: Long, name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
+    override fun updateApartment(@PathVariable id: Long, dto: ApartmentDTO) {
     }
 
     override fun deleteApartment(id: Long) {

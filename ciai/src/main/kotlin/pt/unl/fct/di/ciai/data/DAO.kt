@@ -79,7 +79,7 @@ data class ReviewDAO(
 @Entity
 data class Picture(
     @Id @GeneratedValue val id: Long,
-    val byte: ByteArray
+    val url: String
 )
 enum class ApartmentState{
     UNDER_CONSIDERATION,
