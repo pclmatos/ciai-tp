@@ -52,13 +52,29 @@ interface ApartmentAPI {
 
     @GetMapping("{id}/calendar")
     @Operation(summary = "Retrieves the calendar of the apartment with the given id")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Apartment's calendar retrieved successfully"),
+        ApiResponse(responseCode = "404", description = "No apartment found"),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
     fun getApartmentCalendar(@PathVariable id:Long) //= apartmentApp.getApartmentCalendar(id)
 
     @PutMapping("{id}/update")
     @Operation(summary = "Updates an apartment")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Apartment information updated successfully"),
+        ApiResponse(responseCode = "400", description = "Invalid apartment information"),
+        ApiResponse(responseCode = "404", description = "No apartment found"),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
     fun updateApartment(@PathVariable id:Long, dto: ApartmentDTO) //= apartmentApp.updateApartment(id, updatedInfo)
 
     @DeleteMapping("{id}")
     @Operation(summary = "Deletes the apartment with the given id")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Apartment deleted successfully"),
+        ApiResponse(responseCode = "404", description = "No apartment found"),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
     fun deleteApartment(@PathVariable id:Long) //= apartmentApp.deleteApartment(id)
 }
