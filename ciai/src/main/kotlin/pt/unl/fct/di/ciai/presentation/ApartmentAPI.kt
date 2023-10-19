@@ -35,18 +35,41 @@ interface ApartmentAPI {
     fun getAllApartment(): List<ApartmentDTO>
 
     @GetMapping("{id}")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Apartment exists"),
+        ApiResponse(responseCode = "404", description = "No apartment found"),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
     @Operation(summary = "Retrieves the apartment with the given id")
     fun getApartment(@PathVariable id:Long) //= apartmentApp.getApartment(id)
 
     @GetMapping("{id}/history")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Apartment's reservation history found."),
+        ApiResponse(responseCode = "204", description = "No reservation history found for the given apartment."),
+        ApiResponse(responseCode = "404", description = "No apartment found."),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
     @Operation(summary = "Retrieves the history of reservations of the apartment with the given id")
     fun getApartmentHistory(@PathVariable id:Long) //= apartmentApp.getApartmentHistory(id)
 
     @GetMapping("{id}/reservations")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Apartment's reservations found."),
+        ApiResponse(responseCode = "204", description = "No reservations found for the given apartment."),
+        ApiResponse(responseCode = "404", description = "No apartment found."),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
     @Operation(summary = "Retrieves the reservations of the apartment with the given id")
     fun getApartmentReservations(@PathVariable id:Long) //= apartmentApp.getApartmentReservations(id)
 
     @GetMapping("{id}/reviews")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "Apartment's reviews found."),
+        ApiResponse(responseCode = "204", description = "No reviews found for the given apartment."),
+        ApiResponse(responseCode = "404", description = "No apartment found."),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
     @Operation(summary = "Retrieves the reviews of the apartment with the given id")
     fun getApartmentReviews(@PathVariable id:Long) //= apartmentApp.getApartmentReviews(id)
 
