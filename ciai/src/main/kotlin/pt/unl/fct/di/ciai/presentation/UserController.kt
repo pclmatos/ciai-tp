@@ -8,9 +8,9 @@ import pt.unl.fct.di.ciai.application.UserApp
 
 
 @RestController
-class UserController(val app:UserApp):UserAPI {
-    override fun getUser(id: Long) {
-    }
+class UserController(val app:UserApp): UserAPI {
+    override fun getUser(id: Long): UserDTO = app.getUser(id)
+    override fun getAllUsers(): List<UserDTO> = app.getAllUsers()
 
     override fun findUserByUsername(username: String) {
 
@@ -22,8 +22,7 @@ class UserController(val app:UserApp):UserAPI {
     override fun updateUser(@PathVariable id: Long, userData: UserDTO) {
     }
 
-    override fun addUser(user: UserDTO) {
-    }
+    override fun addUser(user: UserDTO): UserDTO = app.addUser(user)
 
     override fun removeUser(id: Long) {
     }

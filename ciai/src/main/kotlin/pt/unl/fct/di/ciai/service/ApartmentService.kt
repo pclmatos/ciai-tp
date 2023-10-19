@@ -7,8 +7,9 @@ import pt.unl.fct.di.ciai.presentation.ApartmentDTO
 
 @Service
 class ApartmentService(val apartments: ApartmentRepository) {
-    fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) {
+    fun addApartment(data: ApartmentDTO): ApartmentDTO {
         //add apartment to DB
+        return ApartmentDTO(0,"","","","",0)
     }
 
     fun getApartment(id:Long) {

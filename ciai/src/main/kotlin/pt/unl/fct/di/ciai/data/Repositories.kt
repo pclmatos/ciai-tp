@@ -5,9 +5,7 @@ import org.springframework.data.repository.CrudRepository
 
 interface  ApartmentRepository: CrudRepository<ApartmentDAO, Long>
 interface UserRepository : CrudRepository<UserDAO, Long>{
-
-    @Query("select u from UserDAO u where u.username = :username")
-    fun checkIfExists(username: String): Boolean
+    fun findByUsername(username: String): UserDAO?
 
 }
 

@@ -3,6 +3,7 @@ package pt.unl.fct.di.ciai.application
 import io.swagger.v3.core.util.Json
 import org.springframework.stereotype.Service
 import pt.unl.fct.di.ciai.presentation.ApartmentDTO
+import pt.unl.fct.di.ciai.presentation.UserDTO
 import pt.unl.fct.di.ciai.service.ApartmentService
 
 @Service
@@ -14,7 +15,7 @@ class ApartmentApp(val apartments:ApartmentService) {
         return word
     }
 
-    fun addApartment(name:String, description: String, amenities: String, location: String, pricePerNight:Int) = apartments.addApartment(name, description, amenities, location, pricePerNight)
+    fun addApartment(data : ApartmentDTO): ApartmentDTO = apartments.addApartment(data)
 
     fun getAllApartments() = apartments.apartments.findAll().toList()
 

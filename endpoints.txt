@@ -1,3 +1,5 @@
+--------Apartments-------------
+
 GET /apartments/all - Retrieves all apartments (done)
 GET /apartments/{id} - Retrieves the information of apartment with {id} (done)
 GET /apartments?search=<searchCriteria> - Retrieves all apartments that answer <searchCriteria>
@@ -13,13 +15,19 @@ POST /apartments/{id}/addReview - Add a review to apartment with {id}
 DELETE /apartments/{apartId}/reservations/{resId}/remove - Remove a reservation with {resId} made on an apartment with {apartId}
 DELETE /apartments/{id} - Removes apartment with {id}
 
-GET /people/{id} - Retrieves person with {id} (done)
-GET /people/{id}/reservations - Retrieves the reservations of the person with {id} (done)
+---------Users-----------
 
-PUT /people/{id}/update - Update the information of the person by {id} (done)
-
-POST /people/add - Adds a new person with information in the payload (done)
-POST /people/checkin?apartment=<id> - The current person checks-in to apartment with <id>
-POST /people/checkout?apartment=<id> - The current person checks-out from apartment with <id>
-
+GET /users/{id} - Retrieves person with {id} (done)
+GET /users/{id}/reservations - Retrieves the reservations of the person with {id} (done)
+PUT /users/{id}/update - Update the information of the person by {id} (done)
+POST /users - Adds a new person with information in the payload (done)
+POST /users/checkin?apartment=<id> - The current person checks-in to apartment with <id>
+POST /users/checkout?apartment=<id> - The current person checks-out from apartment with <id>
 DELETE /people/{id}/remove - Removes a person with {id} (done)
+
+-------Reviews----------
+
+
+
+
+-------Reservations-----

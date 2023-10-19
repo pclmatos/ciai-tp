@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.*
 import pt.unl.fct.di.ciai.data.Picture
 
 @Schema(name = "User")
-data class UserDTO(val id: Long, val name:String, val username: String,val password: String,val email: String,val phoneNumber: String, val picture: Picture)
+data class UserDTO(val name:String, val username: String,val password: String,val email: String, val phoneNumber: String, val picture: PictureInUserDTO)
+
+@Schema(name = "Picture")
+data class PictureInUserDTO(val url: String)
 
 @RequestMapping("/users")
 @Tag(name = "Users", description = "Users API")
@@ -21,7 +24,16 @@ interface UserAPI {
         ApiResponse(responseCode = "404", description = "User does not exist"),
         ApiResponse(responseCode = "500", description = "Internal Server Error")
     ])
-    fun getUser(@PathVariable id:Long)// = app.getUser(id)
+    fun getUser(@PathVariable id:Long): UserDTO// = app.getUser(id)
+
+    @GetMapping("")
+    @Operation(summary = "Retrieves all users ")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "A list of all users"),
+        ApiResponse(responseCode = "404", description = "There are no users"),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
+    fun getAllUsers(): List<UserDTO>
 
     @GetMapping("{username}")
     @Operation(summary = "Retrieves User with the given username")
@@ -60,7 +72,7 @@ interface UserAPI {
         ApiResponse(responseCode = "400", description = "User already exists or user data is not properly formatted"),
         ApiResponse(responseCode = "500", description = "Internal Server Error")
     ])
-    fun addUser(user:UserDTO)// = app.addUser(UserInfo)
+    fun addUser(@RequestBody user:UserDTO): UserDTO
 
     @DeleteMapping("{id}/remove")
     @Operation(summary = "Deletes the User with the given id")
