@@ -4,7 +4,7 @@ GET /apartments/all - Retrieves all apartments (done)
 GET /apartments/{id} - Retrieves the information of apartment with {id} (done)
 GET /apartments?search=<searchCriteria> - Retrieves all apartments that answer <searchCriteria>
 GET /apartments/{id}/history - Retrieves the history of an apartment with {id} (done)
-GET /apartments/{id}/reservations - Retrieves all upcoming reservations (done)
+GET /apartments/{id}/reservations - Retrieves all upcoming reservations of an apartment with {id} (done)
 GET /apartments/{id}/reviews - Retrieves all reviews from apartment with {id} (done)
 GET /apartments/{id}/calendar - Retrieves a calendar with the available periods for apartment with {id} (done)
 PUT /apartments/{id}/update - Update information for the apartment with {id} (done)
@@ -12,8 +12,11 @@ PUT /apartments?apartment=<apartId>&reservation=<reservationId> - Decides the st
 POST /apartments/{id}/reservation - Reservation on an apartment with {id} with period information in the payload
 POST /apartments/add - Adds a new apartment with the information in the payload
 POST /apartments/{id}/addReview - Add a review to apartment with {id}
-DELETE /apartments/{apartId}/reservations/{resId}/remove - Remove a reservation with {resId} made on an apartment with {apartId}
-DELETE /apartments/{id} - Removes apartment with {id}
+DELETE /apartments/{apartId}/reservations/{resId}/removeRes - Remove a reservation with {resId} made on an apartment with {apartId}
+DELETE /apartments/{id}/remove - Removes apartment with {id}
+DELETE /apartments/{apartId}/reviews/{revId}/removeRev/ - Remove a review with {revId} made on an apartment with {apartId}
+
+[ FAZ SENTIDO UPDATE REVIEW? ]
 
 ---------Users-----------
 
@@ -28,6 +31,5 @@ DELETE /people/{id}/remove - Removes a person with {id} (done)
 -------Reviews----------
 
 
-
-
 -------Reservations-----
+
