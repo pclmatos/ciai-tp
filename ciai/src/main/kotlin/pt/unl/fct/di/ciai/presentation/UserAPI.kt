@@ -17,7 +17,7 @@ data class PictureInUserDTO(val url: String)
 @RequestMapping("/users")
 @Tag(name = "Users", description = "Users API")
 interface UserAPI {
-    @GetMapping("{id}")
+    @GetMapping("{id}/getById")
     @Operation(summary = "Retrieves User with the given id")
     @ApiResponses(value = [
         ApiResponse(responseCode = "200", description = "The user with the given id"),
@@ -35,7 +35,7 @@ interface UserAPI {
     ])
     fun getAllUsers(): List<UserDTO>
 
-    @GetMapping("{username}")
+    @GetMapping("{username}/getByUsername")
     @Operation(summary = "Retrieves User with the given username")
     @ApiResponses(value = [
         ApiResponse(responseCode = "200", description = "The user with the given username"),
@@ -43,7 +43,7 @@ interface UserAPI {
         ApiResponse(responseCode = "404", description = "User does not exist"),
         ApiResponse(responseCode = "500", description = "Internal Server Error")
     ])
-    fun findUserByUsername(@PathVariable username:String)// = app.getUser(id)
+    fun findUserByUsername(@PathVariable username:String): UserDTO// = app.getUser(id)
 
     @GetMapping("{id}/reservations")
     @Operation(summary = "Retrieves the reservations of the User with the given id")
@@ -65,7 +65,7 @@ interface UserAPI {
     ])
     fun updateUser(@PathVariable id:Long, userData: UserDTO)// = app.updateUser(id, updatedInfo)
 
-    @PostMapping("")
+    @PostMapping("add")
     @Operation(summary = "Adds a new User given the needed data")
     @ApiResponses(value = [
         ApiResponse(responseCode = "200", description = "Added user successfully"),

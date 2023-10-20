@@ -11,6 +11,8 @@ class UserApp(val users: UserService) {
 
     fun getAllUsers(): List<UserDTO> = users.getAllUsers()
 
+    fun findUserByUsername(username:String): UserDTO = users.findUserByUsername(username)
+
     fun getUserReservations(id:Long) = users.getUserReservations(id)
 
     fun updateUser(data: UserDTO) = users.updateUser(data)

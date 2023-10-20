@@ -12,6 +12,11 @@ data class MyUserDetails(val username:String, val password:String, val roles:Str
 class UserService(val users: UserRepository, val aparts: ApartmentService, val reservations: ReservationRepository, val pictures: PictureRepository) {
     fun getUser(id:Long): UserDTO {
         //get User by id
+        val user = users.findById(id)
+        if(user.isPresent) {
+            val userAux = user.get()
+            return UserDTO(userAux.name,userAux.username,userAux.password,userAux.email,userAux.phoneNumber, PictureInUserDTO(userAux.picture.url))
+        }
         return UserDTO("","","","","", PictureInUserDTO(""))
     }
 
@@ -21,8 +26,14 @@ class UserService(val users: UserRepository, val aparts: ApartmentService, val r
         }.toList()
     }
 
-    fun findUserByUsername(username: String?): Optional<MyUserDetails> =
-        Optional.of(MyUserDetails("admin","admin","ADMIN"))
+    fun findUserByUsername(username: String): UserDTO {
+        val user = users.findByUsername(username)
+        if(user != null) {
+            return UserDTO(user.name, user.username, user.password, user.email, user.phoneNumber, PictureInUserDTO(user.picture.url))
+        }
+        return UserDTO("","","","","", PictureInUserDTO(""))
+        //Optional.of(MyUserDetails("admin","admin","ADMIN"))
+    }
 
     fun getUserReservations(id:Long) {
         //get User reservations by id
@@ -45,6 +56,10 @@ class UserService(val users: UserRepository, val aparts: ApartmentService, val r
         return UserDTO(userDao.name,userDao.username,userDao.password,userDao.email,userDao.phoneNumber,PictureInUserDTO(userDao.picture.url))
     }
     fun removeUser(id:Long) {
-        //remove User by id
+        if(users.existsById(id)) {
+            users.deleteById(id)
+        }else {
+            //throw user not found exception (404)
+        }
     }
 }

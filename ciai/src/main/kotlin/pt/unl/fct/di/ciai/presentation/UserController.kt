@@ -12,9 +12,7 @@ class UserController(val app:UserApp): UserAPI {
     override fun getUser(id: Long): UserDTO = app.getUser(id)
     override fun getAllUsers(): List<UserDTO> = app.getAllUsers()
 
-    override fun findUserByUsername(username: String) {
-
-    }
+    override fun findUserByUsername(username: String) = app.findUserByUsername(username)
 
     override fun getUserReservations(id: Long) {
     }
@@ -25,6 +23,7 @@ class UserController(val app:UserApp): UserAPI {
     override fun addUser(user: UserDTO): UserDTO = app.addUser(user)
 
     override fun removeUser(id: Long) {
+        app.removeUser(id)
     }
 
 }
