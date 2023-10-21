@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import io.swagger.v3.oas.annotations.tags.Tag
+import jakarta.websocket.server.PathParam
 import org.springframework.web.bind.annotation.*
 import pt.unl.fct.di.ciai.data.Picture
 
@@ -82,4 +83,23 @@ interface UserAPI {
         ApiResponse(responseCode = "500", description = "Internal Server Error")
     ])
     fun removeUser(@PathVariable id:Long)// = app.removeUser(id)
+
+    @PostMapping("checkin")
+    @Operation(summary = "Current person checks in apartment with {id}")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "User checked-in successfully"),
+        ApiResponse(responseCode = "404", description = "Apartment not found"),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
+    fun checkIn(@RequestParam apartmentId:Long)
+
+
+    @PostMapping("checkout")
+    @Operation(summary = "Current person checks out apartment with {id}")
+    @ApiResponses(value = [
+        ApiResponse(responseCode = "200", description = "User checked-out successfully"),
+        ApiResponse(responseCode = "404", description = "Apartment not found"),
+        ApiResponse(responseCode = "500", description = "Internal Server Error")
+    ])
+    fun checkOut(@RequestParam apartmentId:Long)
 }

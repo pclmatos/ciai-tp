@@ -26,4 +26,12 @@ class UserController(val app:UserApp): UserAPI {
         app.removeUser(id)
     }
 
+    override fun checkIn(apartmentId: Long) {
+        TODO("Not yet implemented")
+    }
+
+    override fun checkOut(apartmentId: Long) {
+        TODO("Not yet implemented")
+    }
+
 }

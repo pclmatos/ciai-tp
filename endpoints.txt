@@ -7,11 +7,14 @@ GET /apartments/{id}/history - Retrieves the history of an apartment with {id}
 GET /apartments/{id}/reservations - Retrieves all upcoming reservations of an apartment with {id}
 GET /apartments/{id}/reviews - Retrieves all reviews from apartment with {id} 
 GET /apartments/{id}/calendar - Retrieves a calendar with the available periods for apartment with {id} 
+
 PUT /apartments/{id}/update - Update information for the apartment with {id}
 PUT /apartments?apartment=<apartId>&reservation=<reservationId> - Decides the state of reservation with {reservationId} for apartment with {apartId} with the information in the payload
+
 POST /apartments/{id}/reservation - Reservation on an apartment with {id} with period information in the payload
 POST /apartments/add - Adds a new apartment with the information in the payload
 POST /apartments/{id}/addReview - Add a review to apartment with {id}
+
 DELETE /apartments/{apartId}/reservations/{resId}/removeRes - Remove a reservation with {resId} made on an apartment with {apartId}
 DELETE /apartments/{id}/remove - Removes apartment with {id}
 DELETE /apartments/{apartId}/reviews/{revId}/removeRev/ - Remove a review with {revId} made on an apartment with {apartId}
@@ -22,11 +25,15 @@ DELETE /apartments/{apartId}/reviews/{revId}/removeRev/ - Remove a review with {
 
 GET /users/{id}/getById - Retrieves person with {id}
 GET /users/{username}/getByUsername - Retrieves person with {username}
+GET /users/all - Retrieves all users
 GET /users/{id}/reservations - Retrieves the reservations of the person with {id}
+
 PUT /users/{id}/update - Update the information of the person by {id}
-POST /users - Adds a new person with information in the payload
-POST /users/checkin?apartment=<id> - The current person checks-in to apartment with <id>
-POST /users/checkout?apartment=<id> - The current person checks-out from apartment with <id>
+POST /users/add - Adds a new person with information in the payload
+
+POST /users/checkin?apartmentId=<id> - The current person checks-in to apartment with <id>
+POST /users/checkout?apartmentId=<id> - The current person checks-out from apartment with <id>
+
 DELETE /people/{id}/remove - Removes a person with {id}
 
 -------Reviews----------
