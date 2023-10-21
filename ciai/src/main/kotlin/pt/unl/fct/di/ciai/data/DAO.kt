@@ -2,6 +2,8 @@ package pt.unl.fct.di.ciai.data
 
 import jakarta.persistence.*
 import jakarta.persistence.CascadeType
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
 import java.util.Date
 
 @Entity
@@ -41,8 +43,8 @@ data class ApartmentDAO(
     val name: String,
     val description: String,
     val amenities: String,
-    val location: String,
     val pricePerNight: Int,
+    @ManyToOne val location: Location,
     @OneToMany(cascade = [CascadeType.ALL]) val pictures: List<Picture>,
     @ManyToOne val owner: OwnerDAO,
     @OneToMany(cascade = [CascadeType.ALL]) val reservations: List<ReservationDAO>,
@@ -81,6 +83,14 @@ data class Picture(
     @Id @GeneratedValue val id: Long,
     val url: String
 )
+
+@Entity
+data class Location(
+    @Id @GeneratedValue val id: Long,
+    val name: String,
+    @OneToMany @Fetch(mode = FetchType.EAGER) val apartments: List<ApartmentDAO>
+)
+
 enum class ApartmentState{
     BOOKED,
     OCCUPIED,
