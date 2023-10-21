@@ -17,7 +17,7 @@ import pt.unl.fct.di.ciai.application.ApartmentApp
 
     override fun getAllApartment(): List<ApartmentDTO> {
         return apartmentApp.getAllApartments().map {
-            ApartmentDTO(it.id,it.name,it.description,it.amenities,it.location,it.pricePerNight)
+            ApartmentDTO(it.id,it.name,it.description,it.amenities,it.pricePerNight,LocationInApartment(it.location.name))
         }
     }
 

@@ -45,8 +45,8 @@ data class ApartmentDAO(
     val amenities: String,
     val pricePerNight: Int,
     @ManyToOne val location: Location,
-    @OneToMany(cascade = [CascadeType.ALL]) val pictures: List<Picture>,
     @ManyToOne val owner: OwnerDAO,
+    @OneToMany(cascade = [CascadeType.ALL]) val pictures: List<Picture>,
     @OneToMany(cascade = [CascadeType.ALL]) val reservations: List<ReservationDAO>,
     @OneToMany(cascade = [CascadeType.ALL]) val reviews: List<ReviewDAO>
 )
@@ -88,7 +88,7 @@ data class Picture(
 data class Location(
     @Id @GeneratedValue val id: Long,
     val name: String,
-    @OneToMany @Fetch(mode = FetchType.EAGER) val apartments: List<ApartmentDAO>
+    @OneToMany(fetch = FetchType.EAGER) val apartments: List<ApartmentDAO>
 )
 
 enum class ApartmentState{

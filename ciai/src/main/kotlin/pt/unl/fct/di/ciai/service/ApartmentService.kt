@@ -4,12 +4,13 @@ import org.springframework.stereotype.Service
 import pt.unl.fct.di.ciai.data.ApartmentDAO
 import pt.unl.fct.di.ciai.data.ApartmentRepository
 import pt.unl.fct.di.ciai.presentation.ApartmentDTO
+import pt.unl.fct.di.ciai.presentation.LocationInApartment
 
 @Service
 class ApartmentService(val apartments: ApartmentRepository) {
     fun addApartment(data: ApartmentDTO): ApartmentDTO {
         //add apartment to DB
-        return ApartmentDTO(0,"","","","",0)
+        return ApartmentDTO(0,"","","",0, LocationInApartment(""))
     }
 
     fun getApartment(id:Long) {

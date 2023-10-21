@@ -9,7 +9,10 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.web.bind.annotation.*
 
 @Schema(name="Apartment")
-data class ApartmentDTO(val id: Long, val name:String, val description: String, val amenities: String,val location: String, val pricePerNight:Int)
+data class ApartmentDTO(val id: Long, val name:String, val description: String, val amenities: String, val pricePerNight:Int, val location: LocationInApartment)
+
+@Schema(name="Location")
+data class LocationInApartment(val name: String)
 
 @RequestMapping("/apartments")
 @Tag(name = "Apartments", description = "Apartments API")
@@ -22,7 +25,7 @@ interface ApartmentAPI {
         ApiResponse(responseCode = "400", description = "Invalid apartment information"),
         ApiResponse(responseCode = "500", description = "Internal Server Error")
     ])
-    fun addApartment(dto: ApartmentDTO) //= apartmentApp.addApartment(name, price)
+    fun addApartment(@RequestBody dto: ApartmentDTO) //= apartmentApp.addApartment(name, price)
 
 
     @GetMapping("")
